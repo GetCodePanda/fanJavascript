@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+
+
+    <script>
+
+
+        function changeName (value){
+
+            var myValue = value;
+
+                if( myValue.length < 1){
+
+                    console.log("please enter more than two character ..")
+
+                } else{
+
+                  var firstLetter = myValue.charAt(0);
+                  var lastLetterIndex  = myValue.length - 1;
+                  var lastLetter = myValue.charAt(lastLetterIndex);
+
+                  String.prototype.replaceAt = function(index, character) {
+                      return this.substr(0, index) + character + this.substr(index+character.length);
+
+                  }
+
+                  var output = myValue.replaceAt( 0, lastLetter )
+
+                  var requiredOutput = output.replaceAt(lastLetterIndex, firstLetter);
+
+                  console.log(requiredOutput)
+
+                }
+
+
+        }
+
+        changeName("Obama")
+
+
+    </script>
+
+
+</body>
+</html>
