@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+
+    <style>
+          body{
+            background-color: #7f8c8d;
+          }
+        .wrapper{
+          color:white;
+          background-color: #2c3e50;
+          width: 50%;
+          margin: 0 auto;
+          padding:1em;
+
+        }
+        form{
+            display: flex;
+            padding: .3em;
+        }
+
+        input{
+          width: 100%;
+          padding: .5em;
+          margin-bottom: .4em;
+        }
+    </style>
+</head>
+<body>
+
+  <div class="wrapper">
+    <h2>Please Enter a name : </h2>
+
+    <form >
+      <input type="text" name="name1" id="myInput" /> <br>
+      <input type="button" name="name" value="submit" onclick="changeName(document.getElementById('myInput').value)">
+    </form>
+
+    <h3></h3>
+  </div>
+
+
+    <script>
+
+
+        function changeName (value){
+
+            var myValue = value.trim();
+
+                if( myValue.length < 2){
+
+
+                    var h3 = document.querySelector('h3');
+
+                    h3.innerHTML = "please enter more than one character ..";
+
+                  //  console.log("please enter more than two character ..")
+
+                } else{
+
+                  var firstLetter = myValue.charAt(0);
+                  var lastLetterIndex  = ( myValue.length - 1 );
+                  var lastLetter = myValue.charAt(lastLetterIndex);
+
+                  String.prototype.replaceAt = function(index, character) {
+                      return this.substr(0, index) + character + this.substr(index+character.length);
+
+                  }
+
+                  var output = myValue.replaceAt( 0, lastLetter )
+
+                  var requiredOutput = output.replaceAt(lastLetterIndex, firstLetter);
+
+                  //console.log(requiredOutput)
+
+                  var h3 = document.querySelector('h3');
+
+                  h3.innerHTML = "The Output is : " + requiredOutput;
+
+                }
+
+
+        }
+
+
+
+
+
+
+
+    </script>
+
+
+</body>
+</html>
